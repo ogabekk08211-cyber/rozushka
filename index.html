@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAYO BOUTIQUE | Hijob va ayollar kiyimlari</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fffaf7;
+    color: #40352f;
+}
+
+header {
+    background: #fff;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 12px #0000000b;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 25px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: #8b6556;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #40352f;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #b17a67;
+}
+
+.cart-link {
+    text-decoration: none;
+    background: #8b6556;
+    color: white;
+    padding: 11px 16px;
+    border-radius: 5px;
+}
+
+.hero {
+    min-height: 510px;
+    display: flex;
+    align-items: center;
+    padding: 65px 8%;
+    background:
+        linear-gradient(90deg, #352a25dd, #352a2530),
+        url("https://images.unsplash.com/photo-1584187831200-c86b0d7c1a3a?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    color: white;
+}
+
+.hero-content {
+    max-width: 580px;
+}
+
+.hero small {
+    letter-spacing: 4px;
+    color: #f0d7bd;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.15;
+    margin: 20px 0;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+    color: #f5eee8;
+}
+
+.btn {
+    display: inline-block;
+    background: #a77a65;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.25s;
+}
+
+.btn:hover {
+    background: #765143;
+}
+
+.section {
+    padding: 65px 7%;
+}
+
+.section-title {
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 37px;
+    margin-bottom: 12px;
+    color: #765143;
+}
+
+.subtitle {
+    text-align: center;
+    color: #88776d;
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.category {
+    text-align: center;
+    background: white;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px #60402b0b;
+}
+
+.category img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.category h3 {
+    margin: 18px 5px 8px;
+    font-size: 19px;
+}
+
+.category a {
+    color: #9c6c57;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.products-section {
+    background: #f5ede6;
+}
+
+.search {
+    display: block;
+    max-width: 450px;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddc9bb;
+    border-radius: 6px;
+    margin: 0 auto 20px;
+    font-size: 16px;
+    outline-color: #a77a65;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.filters button {
+    background: white;
+    border: 1px solid #c9b3a5;
+    padding: 10px 17px;
+    border-radius: 30px;
+    cursor: pointer;
+    color: #60483c;
+}
+
+.filters button.active,
+.filters button:hover {
+    background: #8b6556;
+    color: white;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 23px;
+}
+
+.product {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px #60402b0b;
+    transition: 0.25s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+.product img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    display: block;
+    background: #eee5dd;
+}
+
+.product-info {
+    padding: 17px;
+}
+
+.product-info h3 {
+    font-size: 17px;
+    margin-bottom: 12px;
+    min-height: 38px;
+}
+
+.price {
+    color: #95654e;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+
+.product .btn {
+    width: 100%;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.about img {
+    width: 100%;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.about h2 {
+    font-family: Georgia, serif;
+    color: #765143;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    line-height: 1.9;
+    color: #75645b;
+    margin-bottom: 20px;
+}
+
+.cart-box {
+    background: white;
+    max-width: 850px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px #00000008;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee5df;
+}
+
+.remove-btn {
+    background: #a54d4d;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.total {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 23px 0;
+    color: #765143;
+}
+
+.order-form {
+    display: grid;
+    gap: 13px;
+    margin-top: 25px;
+}
+
+.order-form input,
+.order-form textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddc9bb;
+    border-radius: 5px;
+    font: inherit;
+}
+
+.order-form textarea {
+    resize: vertical;
+    min-height: 85px;
+}
+
+.benefits {
+    background: #eee2d7;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    text-align: center;
+}
+
+.benefit h3 {
+    color: #765143;
+    margin: 12px 0;
+}
+
+.benefit p {
+    line-height: 1.7;
+    color: #75645b;
+}
+
+footer {
+    background: #392c26;
+    color: #fff4ec;
+    text-align: center;
+    padding: 40px 20px;
+    line-height: 2;
+}
+
+footer a {
+    color: #e6c7b0;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 13px;
+    }
+
+    .hero {
+        min-height: 440px;
+        padding: 40px 6%;
+    }
+
+    .section {
+        padding: 45px 5%;
+    }
+
+    .section-title {
+        font-size: 30px;
+    }
+
+    .products {
+        gap: 12px;
+    }
+
+    .product img {
+        height: 190px;
+    }
+
+    .product-info {
+        padding: 12px;
+    }
+
+    .product-info h3 {
+        font-size: 15px;
+    }
+
+    .price {
+        font-size: 15px;
+    }
+
+    .product .btn {
+        font-size: 12px;
+        padding: 11px 5px;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">HAYO BOUTIQUE</div>
+
+    <nav>
+        <a href="#home">Bosh sahifa</a>
+        <a href="#categories">Kategoriyalar</a>
+        <a href="#products">Mahsulotlar</a>
+        <a href="#about">Biz haqimizda</a>
+        <a href="#contact">Aloqa</a>
+    </nav>
+
+    <a class="cart-link" href="#cart">
+        🛍 Savatcha (<span id="cart-count">0</span>)
+    </a>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <small>NAFISLIK VA HAYO</small>
+        <h1>Har bir ayolga o‘ziga xos go‘zallik</h1>
+        <p>
+            Nafis ro‘mollar, zamonaviy hijoblar va chiroyli
+            ayollar kiyimlari — barchasi bir joyda.
+        </p>
+        <a href="#products" class="btn">Kolleksiyani ko‘rish →</a>
+    </div>
+</section>
+
+<section class="section" id="categories">
+    <h2 class="section-title">Kategoriyalar</h2>
+    <p class="subtitle">Siz uchun tanlangan nafis kolleksiyalar</p>
+
+    <div class="categories">
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80" alt="Ro‘mollar">
+            <h3>Ro‘mollar</h3>
+            <a href="#products" onclick="setCategory('romol')">Kolleksiyani ko‘rish →</a>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" alt="Ayollar kiyimlari">
+            <h3>Ayollar kiyimlari</h3>
+            <a href="#products" onclick="setCategory('kiyim')">Kolleksiyani ko‘rish →</a>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=600&q=80" alt="Hijoblar">
+            <h3>Hijoblar</h3>
+            <a href="#products" onclick="setCategory('hijob')">Kolleksiyani ko‘rish →</a>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1548624149-f3221e9c4c1c?auto=format&fit=crop&w=600&q=80" alt="Abaya va uzun liboslar">
+            <h3>Abaya va liboslar</h3>
+            <a href="#products" onclick="setCategory('abaya')">Kolleksiyani ko‘rish →</a>
+        </div>
+    </div>
+</section>
+
+<section class="section products-section" id="products">
+    <h2 class="section-title">Bizning mahsulotlar</h2>
+    <p class="subtitle">Nafislikni tanlang, o‘z uslubingizni yarating</p>
+
+    <input class="search" id="search"
+        placeholder="🔍 Mahsulot nomini yozing...">
+
+    <div class="filters">
+        <button class="active" data-category="all">Barchasi</button>
+        <button data-category="romol">Ro‘mollar</button>
+        <button data-category="hijob">Hijoblar</button>
+        <button data-category="kiyim">Kiyimlar</button>
+        <button data-category="abaya">Abaya</button>
+    </div>
+
+    <div class="products" id="products-list"></div>
+</section>
+
+<section class="section" id="cart">
+    <h2 class="section-title">Savatchangiz</h2>
+    <p class="subtitle">Tanlagan mahsulotlaringiz</p>
+
+    <div class="cart-box">
+        <div id="cart-items">Savatcha hozircha bo‘sh.</div>
+
+        <div class="total">
+            Jami: <span id="total">0</span> so‘m
+        </div>
+
+        <h3>Buyurtma ma’lumotlari</h3>
+
+        <form class="order-form" id="order-form">
+            <input id="customer-name" placeholder="Ism-familiyangiz" required>
+            <input id="customer-phone" type="tel"
+                placeholder="Telefon raqamingiz" required>
+            <textarea id="customer-address"
+                placeholder="Yetkazib berish manzili" required></textarea>
+
+            <button class="btn" type="submit">
+                Buyurtmani yuborish
+            </button>
+        </form>
+
+        <p style="font-size:13px;color:#88776d;margin-top:12px">
+            Buyurtma yuborish uchun do‘kon egasining Telegram ma’lumotlarini
+            keyin ulash kerak.
+        </p>
+    </div>
+</section>
+
+<section class="section about" id="about">
+    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80"
+         alt="Hayo Boutique kolleksiyasi">
+
+    <div>
+        <h2>HAYO BOUTIQUE haqida</h2>
+        <p>
+            HAYO BOUTIQUE — zamonaviy, nafis va didli kiyinishni
+            istaydigan ayollar uchun mo‘ljallangan do‘kon.
+        </p>
+        <p>
+            Bizning maqsadimiz — har bir ayol o‘ziga mos ro‘mol,
+            hijob va kiyimlarni qulay tanlashi uchun chiroyli
+            va sodda xarid muhitini yaratish.
+        </p>
+        <a href="#products" class="btn">Mahsulotlarni ko‘rish</a>
+    </div>
+</section>
+
+<section class="section benefits">
+    <div class="benefit">
+        <div style="font-size:32px">🌸</div>
+        <h3>Nafis dizayn</h3>
+        <p>Did bilan tanlangan zamonaviy kolleksiya.</p>
+    </div>
+
+    <div class="benefit">
+        <div style="font-size:32px">💝</div>
+        <h3>Siz uchun tanlov</h3>
+        <p>Har xil rang va uslubdagi mahsulotlar.</p>
+    </div>
+
+    <div class="benefit">
+        <div style="font-size:32px">📦</div>
+        <h3>Buyurtma</h3>
+        <p>O‘zingizga yoqqan mahsulotlarni savatchaga qo‘shing.</p>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="logo" style="color:#e6c7b0">HAYO BOUTIQUE</div>
+    <p>Nafislik, hayo va go‘zallik bir manzilda.</p>
+    <p>Telefon: +998 90 123 45 67</p>
+    <p>Instagram: @hayo_boutique</p>
+    <p>Telegram: @hayo_boutique</p>
+    <p>© 2026 HAYO BOUTIQUE. Barcha huquqlar himoyalangan.</p>
+</footer>
+
+<script>
+const products = [
+    {
+        id: 1,
+        name: "Atlas ro‘mol",
+        category: "romol",
+        price: 65000,
+        image: "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 2,
+        name: "Kundalik hijob",
+        category: "hijob",
+        price: 55000,
+        image: "https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 3,
+        name: "Nafis uzun ko‘ylak",
+        category: "kiyim",
+        price: 280000,
+        image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 4,
+        name: "Klassik abaya",
+        category: "abaya",
+        price: 350000,
+        image: "https://images.unsplash.com/photo-1548624149-f3221e9c4c1c?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 5,
+        name: "Shifon ro‘mol",
+        category: "romol",
+        price: 75000,
+        image: "https://images.unsplash.com/photo-1584187831200-c86b0d7c1a3a?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 6,
+        name: "Zamonaviy hijob",
+        category: "hijob",
+        price: 60000,
+        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 7,
+        name: "Bayramona libos",
+        category: "kiyim",
+        price: 420000,
+        image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        id: 8,
+        name: "Keng bichimli abaya",
+        category: "abaya",
+        price: 390000,
+        image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=600&q=80"
+    }
+];
+
+let cart = [];
+let selectedCategory = "all";
+
+function money(value) {
+    return value.toLocaleString("uz-UZ");
+}
+
+function renderProducts() {
+    const query = document.getElementById("search")
+        .value.toLowerCase().trim();
+
+    const list = products.filter(p =>
+        (selectedCategory === "all" ||
+         p.category === selectedCategory) &&
+        p.name.toLowerCase().includes(query)
+    );
+
+    document.getElementById("products-list").innerHTML =
+        list.length ? list.map(p => `
+            <div class="product">
+                <img src="${p.image}" alt="${p.name}"
+                     loading="lazy"
+                     onerror="this.src='https://placehold.co/400x400?text=HAYO+BOUTIQUE'">
+                <div class="product-info">
+                    <h3>${p.name}</h3>
+                    <div class="price">${money(p.price)} so‘m</div>
+                    <button class="btn" onclick="addToCart(${p.id})">
+                        Savatchaga qo‘shish
+                    </button>
+                </div>
+            </div>
+        `).join("") :
+        "<p>Mahsulot topilmadi.</p>";
+}
+
+function setCategory(category) {
+    selectedCategory = category;
+
+    document.querySelectorAll(".filters button").forEach(btn => {
+        btn.classList.toggle(
+            "active",
+            btn.dataset.category === category
+        );
+    });
+
+    renderProducts();
+}
+
+document.querySelectorAll(".filters button").forEach(btn => {
+    btn.addEventListener("click", () => setCategory(btn.dataset.category));
+});
+
+document.getElementById("search").addEventListener("input", renderProducts);
+
+function addToCart(id) {
+    const product = products.find(p => p.id === id);
+    const existing = cart.find(p => p.id === id);
+
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cart.push({ ...product, quantity: 1 });
+    }
+
+    renderCart();
+}
+
+function removeFromCart(id) {
+    cart = cart.filter(p => p.id !== id);
+    renderCart();
+}
+
+function renderCart() {
+    const count = cart.reduce((sum, p) => sum + p.quantity, 0);
+    const total = cart.reduce((sum, p) => sum + p.price * p.quantity, 0);
+
+    document.getElementById("cart-count").textContent = count;
+    document.getElementById("total").textContent = money(total);
+
+    document.getElementById("cart-items").innerHTML = cart.length
+        ? cart.map(p => `
+            <div class="cart-item">
+                <span>
+                    ${p.name} × ${p.quantity}
+                    <br>${money(p.price * p.quantity)} so‘m
+                </span>
+                <button class="remove-btn" onclick="removeFromCart(${p.id})">
+                    O‘chirish
+                </button>
+            </div>
+        `).join("")
+        : "Savatcha hozircha bo‘sh.";
+}
+
+document.getElementById("order-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    if (cart.length === 0) {
+        alert("Avval savatchaga mahsulot qo‘shing!");
+        return;
+    }
+
+    const name = document.getElementById("customer-name").value.trim();
+    const phone = document.getElementById("customer-phone").value.trim();
+    const address = document.getElementById("customer-address").value.trim();
+
+    const summary = cart.map(p =>
+        `${p.name} x ${p.quantity} = ${money(p.price * p.quantity)} so‘m`
+    ).join("\n");
+
+    const message =
+        `BUYURTMA — HAYO BOUTIQUE\n\n` +
+        `Ism: ${name}\nTelefon: ${phone}\nManzil: ${address}\n\n` +
+        `${summary}\n\nJami: ${
+            money(cart.reduce((sum, p) => sum + p.price * p.quantity, 0))
+        } so‘m`;
+
+    alert(
+        "Buyurtma ma’lumotlari tayyorlandi.\n\n" +
+        message +
+        "\n\nHozircha buyurtma do‘konga yuborilmadi. " +
+        "Telegram yoki server ulanishi kerak."
+    );
+
+    console.log(message);
+});
+
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
